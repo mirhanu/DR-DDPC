@@ -66,7 +66,7 @@ python run_all.py --experiments constraint_sweep noise_sweep_zero_mean
 | `noise_sweep_zero_mean` | Tracking cost vs. disturbance variance (zero-mean noise) |
 | `noise_sweep_biased` | Same experiment with biased noise (mean = 0.05) |
 | `cost_l1` | L1 tracking cost across noise levels |
-| `cost_asymmetric` | Asymmetric quadratic cost across noise levels |
+| `cost_asymmetric` | Asymmetric linear cost across noise levels |
 
 ---
 

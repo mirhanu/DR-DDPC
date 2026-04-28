@@ -156,11 +156,11 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
                 [e["cost"] for e in sweep_results[ctrl_name][eps][b]])
 
     plt.rcParams.update({
-        "font.size": 16,
-        "axes.titlesize": 18,
-        "axes.labelsize": 16,
-        "xtick.labelsize": 14,
-        "ytick.labelsize": 14,
+        "font.size": 22,
+        "axes.titlesize": 24,
+        "axes.labelsize": 24,
+        "xtick.labelsize": 20,
+        "ytick.labelsize": 20,
     })
 
     # ---- Violation heatmap ----
@@ -175,7 +175,6 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
         annot_kws={"size": 14}
     )
 
-    plt.title("Mean Violation Rate (%)")
     plt.xlabel(r"$\beta$")
     plt.ylabel(r"$\varepsilon_{\mathrm{con}}$")
     plt.tight_layout()
@@ -195,7 +194,6 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
         annot_kws={"size": 14}
     )
 
-    plt.title("Mean Performance Cost")
     plt.xlabel(r"$\beta$")
     plt.ylabel(r"$\varepsilon_{\mathrm{con}}$")
     plt.tight_layout()
