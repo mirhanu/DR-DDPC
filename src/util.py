@@ -147,7 +147,6 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
     """Heat map of mean violation rate over (epsilon_const, beta) grid."""
     data_viol = np.zeros((len(eps_list), len(beta_list)))
     data_cost = np.zeros_like(data_viol)
-
     for i, eps in enumerate(eps_list):
         for j, b in enumerate(beta_list):
             data_viol[i, j] = np.mean(
@@ -156,34 +155,34 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
                 [e["cost"] for e in sweep_results[ctrl_name][eps][b]])
 
     plt.rcParams.update({
-        "font.size": 22,
-        "axes.titlesize": 24,
-        "axes.labelsize": 24,
-        "xtick.labelsize": 20,
-        "ytick.labelsize": 20,
+        "font.size": 28,
+        "axes.titlesize": 30,
+        "axes.labelsize": 30,
+        "xtick.labelsize": 26,
+        "ytick.labelsize": 26,
     })
 
     # ---- Violation heatmap ----
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(12, 9))
     sns.heatmap(
         data_viol,
         annot=True,
         fmt=".2f",
-        cmap="YlOrRd",
+        cmap="YlGnBu",
         xticklabels=beta_list,
         yticklabels=eps_list,
-        annot_kws={"size": 14}
+        annot_kws={"size": 22},
+        cbar_kws={"shrink": 0.8}
     )
-
-    plt.xlabel(r"$\beta$")
-    plt.ylabel(r"$\varepsilon_{\mathrm{con}}$")
+    plt.xlabel(r"$\beta$", labelpad=12)
+    plt.ylabel(r"$\varepsilon_{\mathrm{con}}$", labelpad=12)
     plt.tight_layout()
     path = os.path.join(save_dir, f"violation_rate_{ctrl_name}.pdf")
-    plt.savefig(path)
+    plt.savefig(path, bbox_inches="tight")
     plt.close()
 
     # ---- Cost heatmap ----
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(12, 9))
     sns.heatmap(
         data_cost,
         annot=True,
@@ -191,14 +190,14 @@ def plot_sweep_heatmaps(sweep_results, ctrl_name, eps_list, beta_list, save_dir=
         cmap="YlGnBu",
         xticklabels=beta_list,
         yticklabels=eps_list,
-        annot_kws={"size": 14}
+        annot_kws={"size": 22},
+        cbar_kws={"shrink": 0.8}
     )
-
-    plt.xlabel(r"$\beta$")
-    plt.ylabel(r"$\varepsilon_{\mathrm{con}}$")
+    plt.xlabel(r"$\beta$", labelpad=12)
+    plt.ylabel(r"$\varepsilon_{\mathrm{con}}$", labelpad=12)
     plt.tight_layout()
     path = os.path.join(save_dir, f"cost_{ctrl_name}.pdf")
-    plt.savefig(path)
+    plt.savefig(path, bbox_inches="tight")
     plt.close()
     print(f"Saved heatmap → {path}")
 
